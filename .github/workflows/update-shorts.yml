@@ -1,0 +1,112 @@
+name: Update YouTube Shorts
+
+on:
+  schedule:
+    # Every 3 hours
+    - cron: '0 */3 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-shorts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch latest Shorts from YouTube RSS
+        id: fetch-shorts
+        run: |
+          CHANNEL_ID="UCRtEqdqI_s1B4xgARE_NPZg"
+          
+          # Fetch RSS feed
+          curl -sfL "https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}" -o rss.xml
+          
+          # Parse and generate new SHORTS array
+          python3 << 'PYEOF'
+          import re, json
+
+          with open('rss.xml', 'r') as f:
+              text = f.read()
+
+          entries = re.split(r'<entry>', text)[1:9]  # max 8 shorts
+          shorts = []
+          for e in entries:
+              vid_m = re.search(r'<yt:videoId>([^<]+)</yt:videoId>', e)
+              title_m = re.search(r'<title>([^<]+)</title>', e)
+              if vid_m and title_m:
+                  vid = vid_m.group(1)
+                  title = title_m.group(1)
+                  # Escape for JS string
+                  title = title.replace("\\", "\\\\").replace("'", "\\'").replace("&quot;", '"').replace("&amp;", "&")
+                  shorts.append(f"    {{id:'{vid}',title:'{title}'}}")
+
+          new_block = "  const SHORTS=[\n" + ",\n".join(shorts) + ",\n  ];"
+          
+          with open('new_shorts.txt', 'w') as f:
+              f.write(new_block)
+          
+          print(f"Generated {len(shorts)} shorts")
+          PYEOF
+
+      - name: Update HTML file
+        run: |
+          python3 << 'PYEOF'
+          import re
+
+          with open('index.html', 'r', encoding='utf-8') as f:
+              html = f.read()
+
+          with open('new_shorts.txt', 'r') as f:
+              new_shorts = f.read().strip()
+
+          # Find and replace the SHORTS block
+          pattern = r'const SHORTS=\[[\s\S]*?\];'
+          match = re.search(pattern, html)
+          
+          if not match:
+              print("ERROR: SHORTS block not found!")
+              exit(1)
+
+          old_block = match.group(0)
+          new_html = html.replace(old_block, new_shorts, 1)
+
+          if new_html == html:
+              print("ERROR: Replacement failed!")
+              exit(1)
+
+          with open('index.html', 'w', encoding='utf-8') as f:
+              f.write(new_html)
+
+          print(f"Updated! Old: {len(old_block)} chars -> New: {len(new_shorts)} chars")
+          PYEOF
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --quiet index.html; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected!"
+            git diff index.html | head -30
+          fi
+
+      - name: Commit and push changes
+        if: steps.check-changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "auto: update YouTube shorts $(date '+%Y-%m-%d %H:%M')"
+          git push
+          echo "Pushed to GitHub!"
+
+      - name: Cleanup
+        if: always()
+        run: rm -f rss.xml new_shorts.txt
