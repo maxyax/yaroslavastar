@@ -1919,6 +1919,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   // Pre-loaded latest Shorts from @YaroslavaYakusheva channel
   // To update: run: curl -s "https://www.youtube.com/feeds/videos.xml?channel_id=UCRtEqdqI_s1B4xgARE_NPZg" | grep -o '<yt:videoId>[^<]*</yt:videoId>\|<title>[^<]*</title>'
   const SHORTS=[
+    {id:'kPQPMc8dIpo',title:'До скольки тебе разрешают гулять?'},
     {id:'Kk1aS_ZSYFI',title:'Принцессы Диснея'},
     {id:'sW8dcnOq3IU',title:'Сквишу потом было плохо😭'},
     {id:'gLxot32WTms',title:'Отмечай такую'},
@@ -1926,7 +1927,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     {id:'AQaSs5722TM',title:'Кто такой же?'},
     {id:'i1fR2bTcrd8',title:'Грустно'},
     {id:'0VooYfllun8',title:'Я блондинка и this is FACTS'},
-    {id:'trNSNeNXTSo',title:'Как хорошо что я блондинка'},
   ];
 
   grid.innerHTML=SHORTS.map(v=>`
