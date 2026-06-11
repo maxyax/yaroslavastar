@@ -1919,14 +1919,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   // Pre-loaded latest Shorts from @YaroslavaYakusheva channel
   // To update: run: curl -s "https://www.youtube.com/feeds/videos.xml?channel_id=UCRtEqdqI_s1B4xgARE_NPZg" | grep -o '<yt:videoId>[^<]*</yt:videoId>\|<title>[^<]*</title>'
   const SHORTS=[
+    {id:'RiRA3EQqLx4',title:'🤍🤍🤍'},
+    {id:'P7RZbtoHFic',title:'Было хоть раз?'},
+    {id:'q5nJlvvIUo8',title:'Красиво?'},
+    {id:'HJaP68Wurj4',title:'Отмечай'},
+    {id:'060XiGOtHEs',title:'Вывезла?'},
+    {id:'yCqwfCf7i9k',title:'Красотка?'},
+    {id:'e04XulkrutM',title:'Скажите что кто то тоже их помнит и это все был не сон🥹'},
     {id:'kPQPMc8dIpo',title:'До скольки тебе разрешают гулять?'},
-    {id:'Kk1aS_ZSYFI',title:'Принцессы Диснея'},
-    {id:'sW8dcnOq3IU',title:'Сквишу потом было плохо😭'},
-    {id:'gLxot32WTms',title:'Отмечай такую'},
-    {id:'S5VGdH1qr8g',title:'Это плаксик?'},
-    {id:'AQaSs5722TM',title:'Кто такой же?'},
-    {id:'i1fR2bTcrd8',title:'Грустно'},
-    {id:'0VooYfllun8',title:'Я блондинка и this is FACTS'},
   ];
 
   grid.innerHTML=SHORTS.map(v=>`
