@@ -1919,14 +1919,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   // Pre-loaded latest Shorts from @YaroslavaYakusheva channel
   // To update: run: curl -s "https://www.youtube.com/feeds/videos.xml?channel_id=UCRtEqdqI_s1B4xgARE_NPZg" | grep -o '<yt:videoId>[^<]*</yt:videoId>\|<title>[^<]*</title>'
   const SHORTS=[
+    {id:'QSJCjFOAr_Y',title:'ВЛОГ С ТОПФЕСТ 2026'},
+    {id:'ZlTsBnnaUSs',title:'Кобяков краш или нет?'},
+    {id:'LEPUo3oLkec',title:'Вайб?'},
+    {id:'SFaQRm62jIg',title:'Кто то не любит дождь?..'},
     {id:'RiRA3EQqLx4',title:'🤍🤍🤍'},
     {id:'P7RZbtoHFic',title:'Было хоть раз?'},
     {id:'q5nJlvvIUo8',title:'Красиво?'},
     {id:'HJaP68Wurj4',title:'Отмечай'},
-    {id:'060XiGOtHEs',title:'Вывезла?'},
-    {id:'yCqwfCf7i9k',title:'Красотка?'},
-    {id:'e04XulkrutM',title:'Скажите что кто то тоже их помнит и это все был не сон🥹'},
-    {id:'kPQPMc8dIpo',title:'До скольки тебе разрешают гулять?'},
   ];
 
   grid.innerHTML=SHORTS.map(v=>`
