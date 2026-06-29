@@ -893,20 +893,20 @@ footer{background:var(--deep);padding:44px 48px 28px}
   .form-inner{padding:0 10px}
   .contact-form{padding:28px 20px}
   .f-row{grid-template-columns:1fr}
-  /* Footer socials - equal width buttons, vertical stack on mobile */
-  .footer-icons{flex-direction:column;align-items:stretch;gap:8px;padding:0;width:100%;max-width:100%;box-sizing:border-box}
+  /* Footer socials - vertical stack on mobile with text */
+  .footer-icons{flex-direction:column;align-items:stretch;gap:8px;padding:0}
   .fi-link{
-    display:flex;align-items:center;gap:10px;
-    font-size:.8rem;font-weight:600;
-    padding:12px 16px;border-radius:12px;
-    text-decoration:none;
-    box-sizing:border-box;width:100%;max-width:100%;
-    white-space:normal;overflow:hidden;
-    background:rgba(255,255,255,.05);
+    display:flex;align-items:center;justify-content:flex-start;gap:12px;
+    font-size:.85rem;font-weight:600;
+    padding:12px 16px;border-radius:14px;
+    text-decoration:none;color:white;
+    box-sizing:border-box;width:100%;
+    background:rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.1);
     transition:all .2s;
-    min-width:0;
   }
+  .fi-link svg{width:22px;height:22px;flex-shrink:0}
+  .fi-link img{width:24px;height:24px;border-radius:6px;flex-shrink:0}
   .fi-link:hover{background:rgba(255,255,255,.1);transform:none}
   .fi-link svg{width:20px;height:20px;flex-shrink:0}
   .fi-link img{width:20px;height:20px;border-radius:5px;flex-shrink:0}
