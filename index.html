@@ -862,8 +862,15 @@ footer{background:var(--deep);padding:44px 48px 28px}
   .photo-card:nth-child(4){width:95px;height:120px;bottom:0;right:5px;transform:none;z-index:1}
   .sc-n{font-size:2.2rem}
   .sc-ico{font-size:1.5rem}
-  .plat-grid{grid-template-columns:1fr}
-  .pc-stat{font-size:2rem}
+  .plat-grid{grid-template-columns:1fr;gap:12px}
+  .pc-card{display:flex;align-items:center;gap:14px;text-align:left;padding:16px 18px}
+  .pc-head{flex-direction:row;gap:12px;align-items:center;text-align:left}
+  .pc-logo-wrap{width:44px;height:44px;min-width:44px;flex-shrink:0}
+  .pc-name{font-size:.85rem;display:inline}
+  .pc-handle{font-size:.7rem;display:inline;margin-left:4px}
+  .pc-desc{display:none}
+  .pc-stat{font-size:1.5rem}
+  .verify-chip{display:none}
   .brands-grid{gap:40px}
   .fmt{flex-direction:column;align-items:flex-start;gap:8px}
   .fmt-pr{margin-left:0}
@@ -885,13 +892,14 @@ footer{background:var(--deep);padding:44px 48px 28px}
   .form-inner{padding:0 10px}
   .contact-form{padding:28px 20px}
   .f-row{grid-template-columns:1fr}
-  .footer-icons{justify-content:center;flex-wrap:wrap;gap:6px}
-  .fi-link{min-width:0;justify-content:center;font-size:.6rem;padding:6px 10px;flex:1 1 auto;max-width:calc(33% - 4px);text-align:center}
-  /* Fix: social pills in footer - compact on mobile */
-  .plat-pill{font-size:.6rem;padding:8px 10px;min-width:0;flex:1 1 auto;max-width:calc(33% - 4px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .pp-logo{width:28px;height:28px;flex-shrink:0}
-  .pp-stat{font-size:.9rem}
-  .pp-sub,.pp-name{font-size:.5rem;display:none}
+  /* Footer socials - vertical stack on mobile */
+  .footer-icons{flex-direction:column;align-items:flex-start;gap:10px}
+  .fi-link{min-width:100%;justify-content:flex-start;font-size:.75rem;padding:10px 16px;width:100%;box-sizing:border-box}
+  /* Social pills compact */
+  .plat-pill{font-size:.7rem;padding:10px 16px;min-width:0;width:100%;box-sizing:border-box;justify-content:flex-start}
+  .pp-logo{width:32px;height:32px;flex-shrink:0}
+  .pp-stat{font-size:1rem}
+  .pp-sub,.pp-name{font-size:.6rem}
   .gallery-mosaic{grid-template-columns:1fr;gap:8px}
   .gm-item{border-radius:12px}
   .yta-subtitle{align-items:flex-start;flex-direction:column}
