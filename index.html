@@ -853,10 +853,13 @@ footer{background:var(--deep);padding:44px 48px 28px}
   .about-lead{font-size:.98rem;line-height:1.75}
   .stats-grid-main{grid-template-columns:1fr}
   .sc{padding:22px 18px}
-  /* Fix: hide hero photos on mobile - they overlap stats */
-  .hero-visual{display:none}
+  /* Fix: shrink hero photos on mobile so they don't overlap stats */
+  .hero-visual{height:200px}
   .hero-inner{grid-template-columns:1fr;text-align:center}
-  .photo-card{display:none}
+  .photo-card:nth-child(1){width:90px;height:140px;left:0;top:0;transform:none;z-index:4}
+  .photo-card:nth-child(2){width:110px;height:160px;left:95px;top:5px;transform:none;z-index:3}
+  .photo-card:nth-child(3){width:80px;height:120px;bottom:0;left:5px;transform:none;z-index:2}
+  .photo-card:nth-child(4){width:95px;height:120px;bottom:0;right:5px;transform:none;z-index:1}
   .sc-n{font-size:2.2rem}
   .sc-ico{font-size:1.5rem}
   .plat-grid{grid-template-columns:1fr}
@@ -882,10 +885,13 @@ footer{background:var(--deep);padding:44px 48px 28px}
   .form-inner{padding:0 10px}
   .contact-form{padding:28px 20px}
   .f-row{grid-template-columns:1fr}
-  .footer-icons{justify-content:center;flex-wrap:wrap;gap:8px}
-  .fi-link{min-width:40px;justify-content:center;font-size:.7rem;padding:8px 14px}
-  /* Fix: social pills in footer - prevent overflow */
-  .plat-pill{font-size:.65rem;padding:10px 14px;min-width:0;flex:0 0 auto}
+  .footer-icons{justify-content:center;flex-wrap:wrap;gap:6px}
+  .fi-link{min-width:0;justify-content:center;font-size:.6rem;padding:6px 10px;flex:1 1 auto;max-width:calc(33% - 4px);text-align:center}
+  /* Fix: social pills in footer - compact on mobile */
+  .plat-pill{font-size:.6rem;padding:8px 10px;min-width:0;flex:1 1 auto;max-width:calc(33% - 4px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pp-logo{width:28px;height:28px;flex-shrink:0}
+  .pp-stat{font-size:.9rem}
+  .pp-sub,.pp-name{font-size:.5rem;display:none}
   .gallery-mosaic{grid-template-columns:1fr;gap:8px}
   .gm-item{border-radius:12px}
   .yta-subtitle{align-items:flex-start;flex-direction:column}
