@@ -896,17 +896,21 @@ footer{background:var(--deep);padding:44px 48px 28px}
   /* Footer socials - vertical stack on mobile with text */
   .footer-icons{flex-direction:column;align-items:stretch;gap:8px;padding:0}
   .fi-link{
-    display:flex;align-items:center;justify-content:flex-start;gap:10px;
-    font-size:.82rem;font-weight:700;
-    padding:14px 18px;border-radius:14px;
+    display:flex;align-items:center;gap:10px;
+    font-size:.78rem;font-weight:700;
+    padding:10px 16px;border-radius:12px;
     text-decoration:none;color:#fff !important;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
     transition:all .2s;
-    min-height:48px;
   }
-  .fi-link svg{width:24px;height:24px;flex-shrink:0;min-width:24px}
-  .fi-link img{width:26px;height:26px;border-radius:6px;flex-shrink:0;min-width:26px}
+  .fi-icon{font-size:1.2rem;width:26px;text-align:center;flex-shrink:0}
+  .fi-text{color:inherit;font-size:.78rem;font-weight:600}
+  /* Color accents per platform */
+  .fi-link.fk{border-color:rgba(255,90,50,.2)}
+  .fi-link.ft{border-color:rgba(40,180,220,.2)}
+  .fi-link.fy{border-color:rgba(255,0,0,.2)}
+  .fi-link.fv{border-color:rgba(77,140,219,.2)}
   .fi-link:hover{background:rgba(255,255,255,.1);transform:none}
   .fi-link svg{width:20px;height:20px;flex-shrink:0}
   .fi-link img{width:20px;height:20px;border-radius:5px;flex-shrink:0}
