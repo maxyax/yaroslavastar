@@ -853,6 +853,10 @@ footer{background:var(--deep);padding:44px 48px 28px}
   .about-lead{font-size:.98rem;line-height:1.75}
   .stats-grid-main{grid-template-columns:1fr}
   .sc{padding:22px 18px}
+  /* Fix: hide hero photos on mobile - they overlap stats */
+  .hero-visual{display:none}
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .photo-card{display:none}
   .sc-n{font-size:2.2rem}
   .sc-ico{font-size:1.5rem}
   .plat-grid{grid-template-columns:1fr}
@@ -878,8 +882,10 @@ footer{background:var(--deep);padding:44px 48px 28px}
   .form-inner{padding:0 10px}
   .contact-form{padding:28px 20px}
   .f-row{grid-template-columns:1fr}
-  .footer-icons{justify-content:center}
-  .fi-link{min-width:40px;justify-content:center}
+  .footer-icons{justify-content:center;flex-wrap:wrap;gap:8px}
+  .fi-link{min-width:40px;justify-content:center;font-size:.7rem;padding:8px 14px}
+  /* Fix: social pills in footer - prevent overflow */
+  .plat-pill{font-size:.65rem;padding:10px 14px;min-width:0;flex:0 0 auto}
   .gallery-mosaic{grid-template-columns:1fr;gap:8px}
   .gm-item{border-radius:12px}
   .yta-subtitle{align-items:flex-start;flex-direction:column}
